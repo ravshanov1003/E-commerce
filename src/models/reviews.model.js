@@ -1,10 +1,5 @@
 const { model, Schema, Types } = require('mongoose')
 
-const childSchema = new Schema({
-    userId: {
-        required: true,
-    }
-})
 
 const schema = new Schema({
     product_id: {
@@ -22,6 +17,8 @@ const schema = new Schema({
     },
     user_id: {
         required: true,
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
     username: {
         required: true,
@@ -32,6 +29,6 @@ const schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
-}, { timestamps: true, collection: 'products' })
+}, { timestamps: true, collection: 'review' })
 
-module.exports = { ProductModel: model('Product', schema) }
+module.exports = { ReviewModel: model('Review', schema) }
